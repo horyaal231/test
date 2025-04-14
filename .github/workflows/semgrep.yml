@@ -1,0 +1,20 @@
+name: semgrep
+
+on:
+  push:
+    
+jobs: 
+    semgrep:
+        runs-on: ubuntu-latest
+        container:
+            image: semgrep/semgrep
+
+        permissions:
+            contents: read
+        steps:
+              - name: Checkout code
+                uses: actions/checkout@v4
+
+              - name: Semgrep ci
+                run: semgrep ci 
+                
